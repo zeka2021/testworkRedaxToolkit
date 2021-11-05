@@ -1,79 +1,50 @@
-import  { useState, useEffect } from 'react';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Contact from './ContactList/Contact';
-import Filter from './Filter';
-
-import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
+import TodoList from './component/TodoList';
+import InputField from './component/InputField';
 
 function App() {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(window.localStorage.getItem('contacts')) ?? [],
-  );
+  const [todos, setTodos] = useState([]);
+  const [text, setText] = useState('');
 
-  const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-
-  const deleteContact = id => {
-   setContacts(state => state.filter(contact => contact.id !== id));
-  };
-
-  const formSubmitHandler = data => {
-    
-    const { name } = data;
-    const contactId = uuidv4();
-    const newContact = { ...data, id: contactId };
-    const isNotUniqueContact = contacts.some(contact =>
-      contact.name.includes(name),
-    );
-
-    if (isNotUniqueContact) {
-      window.alert(`${name} is already in contacts`);
-      return;
+  const addTodo = () => {
+    if (text.trim().length) {
+      setTodos([
+        ...todos,
+        {
+          id: new Date().toISOString(),
+          text,
+          completed: false,
+        }
+      ])
+      setText('');
     }
+  }
+  const removeTodo = (todoId) => {
+    setTodos(todos.filter(todo => todo.id !== todoId))
+  }
+  const toggleTodoComplete = (todoId) => {
+    setTodos(
+      todos.map(
+        todo => {
+          if (todo.id !== todoId) return todo;
+          return {
+            ...todo,
+            completed: !todo.completed,
+          }
+        }
+      )
+    )
+  }
 
-    setContacts(state => [...state, newContact]);
-  };
-
-  const changeFilter = e => {
-    setFilter( e.currentTarget.value);
-  };
-
-  const filterContacts = () => {
-   
-
-    return [...contacts].filter(({ name }) =>
-      name.toLowerCase().includes(filter),
-    );
-  };
-
- 
-    const filteredContacts = filterContacts();
 
     return (
-      <div className="container">
-        <h1 className="title">Phonebook</h1>
-        <ContactForm onSubmit={formSubmitHandler} />
-        <h2 className="title">Contacts</h2>
-        <Filter onChange={changeFilter} filter={filter} />
-
-        <ContactList deleteContact={deleteContact}>
-          {filteredContacts.map(contact => {
-            const contactId = uuidv4();
-
-            return (
-              <Contact
-                key={contactId}
-                contact={contact}
-                deleteContact={deleteContact}
-              />
-            );
-          })}
-        </ContactList>
+      <div className="container App">
+        <InputField text={text} handleInput={setText} handleSubmit={addTodo}/>
+        <TodoList
+          todos={todos}
+          toggleTodoComplete={toggleTodoComplete}
+          removeTodo={removeTodo}
+        />
       </div>
     );
   }
