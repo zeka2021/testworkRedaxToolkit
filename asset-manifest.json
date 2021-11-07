@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/testworkrRedaxToolkit/static/css/main.54c970d4.chunk.css",
+    "main.js": "/testworkrRedaxToolkit/static/js/main.d45acdc9.chunk.js",
+    "main.js.map": "/testworkrRedaxToolkit/static/js/main.d45acdc9.chunk.js.map",
+    "runtime-main.js": "/testworkrRedaxToolkit/static/js/runtime-main.ab2e89a6.js",
+    "runtime-main.js.map": "/testworkrRedaxToolkit/static/js/runtime-main.ab2e89a6.js.map",
+    "static/css/2.679831fc.chunk.css": "/testworkrRedaxToolkit/static/css/2.679831fc.chunk.css",
+    "static/js/2.b16edbe4.chunk.js": "/testworkrRedaxToolkit/static/js/2.b16edbe4.chunk.js",
+    "static/js/2.b16edbe4.chunk.js.map": "/testworkrRedaxToolkit/static/js/2.b16edbe4.chunk.js.map",
+    "index.html": "/testworkrRedaxToolkit/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/testworkrRedaxToolkit/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.54c970d4.chunk.css.map": "/testworkrRedaxToolkit/static/css/main.54c970d4.chunk.css.map",
+    "static/js/2.b16edbe4.chunk.js.LICENSE.txt": "/testworkrRedaxToolkit/static/js/2.b16edbe4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ab2e89a6.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.b16edbe4.chunk.js",
+    "static/css/main.54c970d4.chunk.css",
+    "static/js/main.d45acdc9.chunk.js"
+  ]
+}
